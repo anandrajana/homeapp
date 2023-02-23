@@ -1,4 +1,9 @@
 body {
-  background: steelblue;
-  color: white;
+  background-color: #000;
+}
+
+.product-list-carousel {
+  margin: auto;
+  max-width: 1232.4px;
+  background-color: #fff;
 }
