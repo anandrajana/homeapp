@@ -7,3 +7,25 @@ body {
   max-width: 1232.4px;
   background-color: #fff;
 }
+
+.product-list-item {
+  padding: 2px 0 16px 0;
+}
+
+.product-info {
+  flex: 1 1 auto;
+  flex-direction: column;
+  display: flex;
+}
+
+.product-list-item a {
+  flex: 1 1 auto;
+  text-decoration: none;
+  flex-direction: column;
+  display: flex;
+}
+
+.use-spring-carousel-item {
+  padding: 0 12px;
+  flex: 0 0 auto;
+}

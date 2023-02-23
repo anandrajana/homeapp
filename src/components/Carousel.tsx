@@ -11,6 +11,7 @@ export const Carousel = ({data} : Props) => {
 
     const { carouselFragment, slideToPrevItem, slideToNextItem } = useSpringCarousel({
         withLoop: true,
+        itemsPerSlide: 4,
         items: data.map((item : Product) => {
           return {
             id: item.id,
