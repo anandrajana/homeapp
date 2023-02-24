@@ -10,7 +10,6 @@ interface Props {
 export const Carousel = ({data} : Props) => {
 
     const { carouselFragment, slideToPrevItem, slideToNextItem } = useSpringCarousel({
-        withLoop: true,
         itemsPerSlide: 4,
         items: data.map((item : Product) => {
           return {
@@ -21,7 +20,7 @@ export const Carousel = ({data} : Props) => {
     });
 
     return (
-        <div className="product-list-carousel">
+        <div className="m-auto max-w-screen-xl bg-white">
             <div role="list">{carouselFragment}</div>
             <button onClick={slideToPrevItem}>Prev item</button>
             <button onClick={slideToNextItem}>Next item</button>
