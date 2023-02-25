@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSpringCarousel } from 'react-spring-carousel'
 import { ReactComponent as ChevronCircle } from "../common/chevron-circled.svg";
 import { Product } from "../common/Product";
@@ -10,7 +10,8 @@ interface Props {
 
 export const Carousel = ({data} : Props) => {
 
-    const { carouselFragment, slideToPrevItem, slideToNextItem } = useSpringCarousel({
+    const [activeItem, setActiveItem] = useState<number>(0);
+    const { carouselFragment, slideToPrevItem, slideToNextItem, useListenToCustomEvent, getCurrentActiveItem } = useSpringCarousel({
         itemsPerSlide: 4,
         items: data.map((item : Product) => {
           return {
@@ -20,12 +21,25 @@ export const Carousel = ({data} : Props) => {
         }),
     });
 
+    useListenToCustomEvent((event) => {
+        if (event.eventName === "onSlideChange") {
+            setActiveItem(getCurrentActiveItem().index);
+        }
+    });
+
     return (
         <div className="flex justify-center items-center h-screen">
-            <div className="m-auto max-w-screen-xl bg-white py-5">
-                <div role="list" className="overflow-hidden">{carouselFragment}</div>
-                <div className="flex mt-4 items-end flex-col px-3">
-                    <div className="flex shrink self-auto flex-row text-dark_grey">
+            <div className="m-auto w-full bg-white py-5">
+                <div role="list" className="overflow-hidden select-none">{carouselFragment}</div>
+                <div className="flex sm:mt-4 items-center lg:items-end flex-col px-3">
+                    <div className="flex my-2 justify-center flex-row self-stretch sm:hidden ">
+                        {data.map((item : Product, index) =>
+                            <div className="rounded-full mx-1 bg-nav_grey" key={item.id}>
+                                <div className={`rounded-full w-2 h-2 bg-dark_grey ${activeItem === index ? 'opacity-1' : 'opacity-0'}`}></div>
+                            </div>
+                        )}
+                    </div>
+                    <div className="hidden sm:flex shrink self-auto flex-row text-dark_grey">
                         <button onClick={slideToPrevItem}>
                             <ChevronCircle className="w-10 h-10 rotate-180"/>
                         </button>

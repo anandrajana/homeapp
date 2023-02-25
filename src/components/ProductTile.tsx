@@ -18,11 +18,11 @@ export const ProductTile = ({data} : Props) => {
                     </h3>
                 </div>
                 <div className="flex shrink basis-auto grow-0 my-4 overflow-hidden">
-                    <picture>
+                    <picture className="h-auto w-296 sm:w-full">
                         <img
                             src={data.imageUrl}
                             alt={data.modelName}
-                            className="object-cover object-center scale-101 hover:scale-108"/>
+                            className="object-cover object-center scale-101 hover:scale-108 transition-transform"/>
                     </picture>
                 </div>
             </a>
