@@ -50,11 +50,11 @@ export const ProductList = ({ data }: Props) => {
           ))}
         </div>
         <div className="hidden sm:flex shrink self-auto flex-row text-dark_grey">
-          <button onClick={slideToPrevItem}>
+          <button onClick={slideToPrevItem} type="button">
             <ChevronCircle className="w-10 h-10 rotate-180" />
           </button>
           <div className="flex flex-col grow-0 basis-2 w-2"></div>
-          <button onClick={slideToNextItem}>
+          <button onClick={slideToNextItem} type="button">
             <ChevronCircle className="w-10 h-10" />
           </button>
         </div>

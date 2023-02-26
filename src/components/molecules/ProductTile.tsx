@@ -7,7 +7,7 @@ interface Props {
 
 export const ProductTile = ({ data }: Props) => {
   return (
-    <div role="listitem" className="pt-0.5 pb-4">
+    <div role="listitem" className="pt-0.5 pb-4" aria-describedby={`Car model ${data.modelName}`}>
       <a
         href={`/cars/${data.id}`}
         className="group flex flex-auto flex-col text-grey hover:text-blue"
@@ -28,7 +28,7 @@ export const ProductTile = ({ data }: Props) => {
             <img
               src={data.imageUrl}
               alt={data.modelName}
-              className="object-cover object-center scale-101 hover:scale-108 transition-transform"
+              className="object-cover object-center scale-101 group-hover:scale-108 transition-transform"
             />
           </picture>
         </div>
